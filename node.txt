@@ -1,0 +1,29 @@
+yarn init -y
+yarn add express
+yarn add typescript -D
+yarn tsc --init // gera o arquivo tsconfig.json
+configura tsconfig.json no rootdir e outdir
+yarn tsc // comando pra gerar os arquivos js na pasta outdir pegando os ts da pasta rootdir
+node arquivojsnapastadist
+toda lib q aparecer como erro nas importações dar comando yarn add @types/libqquertipagem (express - yarn add @types/express -D)
+yarn add ts-node-dev -D (não precisa ficar dando yarn tsc e node arquivonapastadist - já roda o servidor de desenvolvimento e fica em watch com os arquivos ts já convertidos pra js - faz papel do tsc e nodemon)
+configura scripts no package.json
+"scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts"
+  },
+instalar o editorconfig for VS code na parte de extensões
+clicar com o direito e pedir pra gerar o .editorconfig - usar o modelo desse projeto pra evitar bugs ao editar codigo em plataforma windows, mac e linux
+yarn add eslint -D // pra padronizar os padrões de código
+yarn eslint --init // escolher a opção To check syntax, find problems, and enforce code style / import/export / none of these / y pra typescript / node (espaço pra selecionar) / use a popular style guide / airbnb / json / npm n (depois dar yarn add -D em todas as libs listas, excluindo o eslint)
+instalar o eslint na parte de extensões
+ajustar o settings.json do usuário no vscode pra ele adequar os arquivos ao padrão eslint qd salvar
+yarn add -D eslint-import-resolver-typescript // habilitar a capacidade de entender importação de arquivos TS no código (antes só entendi JS) - ver configurações do eslintrc.json pra copiar o q estiver faltando
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+configura eslintrc.json, prettier.config.js, .eslintignore
+
+DEBUG com node
+clicar no play do VSCode e create launch.json, podendo adicionar breakpoints pra olhar variaveis, watchs, stack, exceptions etc
+"request": "attach", // debug se conecta com nossa aplicação q está rodando. Se colocar launch qd rodar o debug ele starta a aplicação
+"protocol": "inspector", // protocolo a ser usado com node
+"restart": true,
